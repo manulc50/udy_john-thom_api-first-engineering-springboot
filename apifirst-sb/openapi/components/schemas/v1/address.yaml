@@ -1,0 +1,48 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier representing a specific address
+    # Para que esta propiedad solo aparezca en la respuesta de una petición http.
+    readOnly: true
+    nullable: true
+  addressLine1:
+    type: string
+    description: Address Line 1
+    minLength: 3
+    maxLength: 100
+    example: 123 Main Street
+  addressLine2:
+    type: string
+    nullable: true
+    description: Address Line 2
+    minLength: 3
+    maxLength: 100
+  city:
+    type: string
+    description: City
+    minLength: 2
+    maxLength: 100
+    example: St Petersburg
+  state:
+    type: string
+    description: 2 character state code
+    minLength: 2
+    maxLength: 2
+    example: FL
+  zip:
+    type: string
+    description: Zip Code
+    minLength: 5
+    maxLength: 10
+    example: 33701
+  dateCreated:
+    $ref: ../common/iso_timestamp.yaml
+  dateUpdated:
+    $ref: ../common/iso_timestamp.yaml
+required: 
+  - addressLine1
+  - city
+  - state
+  - zip

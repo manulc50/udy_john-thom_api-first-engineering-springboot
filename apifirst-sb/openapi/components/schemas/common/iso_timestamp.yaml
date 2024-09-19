@@ -1,0 +1,8 @@
+type: string
+format: date-time
+description: ISO 8601 Timestamp. Date Created and Date Updated are system managed values, should not be sent in request payload - will be ignored.
+example: 2022-08-22T11:43:06-07:00
+title: ISO Timestamp
+# Para que esta propiedad solo aparezca en la respuesta de una petición http.
+readOnly: true
+nullable: true

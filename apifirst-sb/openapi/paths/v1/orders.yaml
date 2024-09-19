@@ -1,0 +1,42 @@
+get:
+  tags:
+    - Order
+  summary: List Orders
+  description: List Orders
+  operationId: listOrders
+  responses:
+    '200':
+      description: Successful Operation
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/v1/order_list.yaml
+
+post: 
+  tags:
+    - Order
+  summary: Create Order
+  description: Create Order.
+  operationId: createOrder
+  requestBody: 
+    content:
+      application/json:
+        schema: 
+          $ref: ../../components/schemas/v1/order_create.yaml
+  responses:  
+    '201':
+      description: Order Created
+      headers:
+        Location:
+          description: Path to the created Order
+          schema: 
+            type: string
+            example: /v1/orders/c6fa6248-32a2-4afe-9a2d-c88905c9eb76
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema: 
+            $ref: ../../components/schemas/Problem.yaml
+    
+  

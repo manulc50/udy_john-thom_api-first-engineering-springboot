@@ -1,0 +1,40 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Unique identifier representing a specific customer
+    # Para que esta propiedad solo aparezca en la respuesta de una petición http.
+    readOnly: true
+    nullable: true
+  name:
+    $ref: name.yaml
+  shipToAddress:
+    $ref: address.yaml
+  billToAddress:
+    $ref: address.yaml
+  email:
+    type: string
+    nullable: true
+    maxLength: 255
+    minLength: 3
+    example: johndoe@test.com
+  phone:
+    type: string
+    nullable: true
+    maxLength: 15
+    minLength: 7
+    example: 800-555-1212
+  paymentMethods:
+    type: array
+    nullable: true
+    items:
+      $ref: payment_method.yaml
+  dateCreated:
+    $ref: ../common/iso_timestamp.yaml
+  dateUpdated:
+    $ref: ../common/iso_timestamp.yaml
+required: 
+  - name
+  - shipToAddress
+  - billToAddress

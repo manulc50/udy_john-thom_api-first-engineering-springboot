@@ -1,0 +1,41 @@
+get:
+  tags:
+    - Customer
+  summary: Get a list of customers
+  description: Get a list of customers.
+  operationId: listCustomers
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/v1/customer_list.yaml
+post:
+  tags: 
+    - Customer
+  summary: Create a new customer
+  description: Create a new customer.
+  operationId: createCustomer
+  requestBody: 
+    content:
+      application/json:
+        schema: 
+          $ref: ../../components/schemas/v1/customer.yaml
+  responses: 
+    '201':
+      description: Created
+      headers:
+        Location:
+          description: The location of the new customer
+          schema: 
+            type: string
+            format: uri
+            example: /v1/customers/a1332371-88d7-47a4-b388-13c4a7c40b82
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema: 
+            $ref: ../../components/schemas/Problem.yaml  
+    
